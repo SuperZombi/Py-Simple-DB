@@ -50,4 +50,9 @@ mydb_unique.delete(id_first_unique)
 ```python
 mydb.save()
 ```
-Allows you to save the state of the database after changes.
+
+## Data:
+```python
+mydb.data
+```
+Allows you to get the whole database.
