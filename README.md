@@ -56,3 +56,7 @@ mydb.save()
 mydb.data
 ```
 Allows you to get the whole database.
+
+<br>
+
+## You can also see usage examples <a href="examples/">here</a>
