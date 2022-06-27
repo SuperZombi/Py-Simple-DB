@@ -1,4 +1,4 @@
-from DataBase import DataBase
+from PySimpleDB import DataBase
 tracks = DataBase("database/tracks.bd")
 
 
