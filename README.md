@@ -1,8 +1,13 @@
 # Py-Simple-DB
 
+## <a href="https://pypi.org/project/PySimpleDB/">Install</a>:
+```
+pip install PySimpleDB
+```
+
 ## Load:
 ```python
-from DataBase import DataBase
+from PySimpleDB import DataBase
 
 mydb = DataBase("simple.bd")
 mydb_unique = DataBase("unique.bd", unique="user")
