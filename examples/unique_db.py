@@ -1,4 +1,4 @@
-from DataBase import DataBase
+from PySimpleDB import DataBase
 users = DataBase("database/users.bd", unique="user")
 
 
