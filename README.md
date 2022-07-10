@@ -1,5 +1,7 @@
 # Py-Simple-DB
 
+<img src="https://shields.io/badge/version-v0.2.0-blue">
+
 ## <a href="https://pypi.org/project/PySimpleDB/">Install</a>:
 ```
 pip install PySimpleDB
@@ -29,19 +31,19 @@ As in this example, the unique key is the "user" argument specified during initi
 ## Find:
 Returns the id of the first matched element, or an array of ids.
 ```python
-id_first = mydb.get(name="Hello")               # 0
-id_array = mydb.get(gender="male", all=True)    # [0...]
+id_first = mydb.find(name="Hello")           # 0
+id_array = mydb.find_all(gender="male")      # [0...]
 ```
 ```python
-id_first_unique = mydb_unique.get(gender="male")            # "User1"
-id_array_unique = mydb_unique.get(gender="male", all=True)  # ["User1"...]
+id_first_unique = mydb_unique.find(gender="male")           # "User1"
+id_array_unique = mydb_unique.find_all(gender="male")       # ["User1"...]
 ```
 
 ## Get row:
-Returns value by key.
+Returns value by id.
 ```python
-mydb.get_by_id(id_first)               # {"name": "Hello", "last_name": "world", "gender": "male"}
-mydb_unique.get_by_id(id_first_unique) # {"name": "Hello world", "gender": "male"}
+mydb.get(id_first)               # {"name": "Hello", "last_name": "world", "gender": "male"}
+mydb_unique.get(id_first_unique) # {"name": "Hello world", "gender": "male"}
 ```
 
 ## Delete row:
@@ -56,11 +58,15 @@ mydb_unique.delete(id_first_unique)
 mydb.save()
 ```
 
-## Data:
+## Get All Data:
+Allows you to get the whole database.
+```python
+mydb.get_all()
+```
+or
 ```python
 mydb.data
 ```
-Allows you to get the whole database.
 
 <br>
 
