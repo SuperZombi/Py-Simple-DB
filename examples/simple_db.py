@@ -10,19 +10,19 @@ def add():
 				date=request.json['date'])
 
 
-# GET
+# GET ROW
 def get():
-	track_id = tracks.get(artist=request.json['artist'], track=request.json['track_name'])
-	track = tracks.get_by_id(track_id)
+	track_id = tracks.find(artist=request.json['artist'], track=request.json['track_name'])
+	track = tracks.get(track_id)
 	return track
 
 
 # GET ALL artist tracks
 def get_all():
-	array = tracks.get(artist=request.json['artist'], all=True)
+	array = tracks.find_all(artist=request.json['artist'])
 	all_tracks = []
 	for i in array:
-		track = tracks.get_by_id(i)
+		track = tracks.get(i)
 		all_tracks.append(track)
 	return all_tracks
 
@@ -37,19 +37,19 @@ def get_all_data():
 
 # DELETE
 def delete():
-	track_id = tracks.get(artist=request.json['artist'], track=request.json['track_name'])
+	track_id = tracks.find(artist=request.json['artist'], track=request.json['track_name'])
 	tracks.delete(track_id)
 
 
 # EDIT
 def edit():
-	track_id = tracks.get(artist=request.json['artist'], track=request.json['track_name'])
-	track = tracks.get_by_id(track_id)
+	track_id = tracks.find(artist=request.json['artist'], track=request.json['track_name'])
+	track = tracks.get(track_id)
 
 	track['genre'] = request.json['genre']
 	tracks.save()
 
 
 # Check if already exists
-if tracks.get(artist=request.form['artist'], track=request.form['track_name']):
+if tracks.find(artist=request.form['artist'], track=request.form['track_name']):
 	return "track already exists"
