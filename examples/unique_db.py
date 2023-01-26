@@ -12,21 +12,21 @@ def add():
 
 # GET
 def get():
-	user = users.get_by_id(request.json['user_name'])
+	user = users.get(request.json['user_name'])
 	return user
 
 
 # Find
 def find():
-	user_id = users.get(role="admin")
-	user = users.get_by_id(user_id)
+	user_id = users.find(role="admin")
+	user = users.get(user_id)
 
 
 # Find ALL
 def find():
-	array = users.get(role="admin", all=True)
+	array = users.find_all(role="admin")
 	for i in array:
-		user = users.get_by_id(i)
+		user = users.get(i)
 
 
 # GET ALL DATA
@@ -41,11 +41,11 @@ def delete():
 
 # EDIT
 def edit():
-	user = users.get_by_id(request.json['user_name'])
+	user = users.get(request.json['user_name'])
 	user['role'] = 'admin'
 	users.save()
 
 
 # Check if already exists
-if users.get_by_id(request.json['user_name']):
+if users.get(request.json['user_name']):
 	return "user already exists"
